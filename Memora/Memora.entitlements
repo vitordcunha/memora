@@ -2,9 +2,39 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+
+	<!-- App Sandbox desativado para permitir Full Disk Access.
+	     StoreLens é distribuído via direct download com notarização,
+	     não pela App Store — o sandbox impediria a varredura de ~/Library. -->
 	<key>com.apple.security.app-sandbox</key>
+	<false/>
+
+	<!-- Full Disk Access: permite ler ~/Library, /var/log e demais
+	     diretórios fora do container do app. Obrigatório para o ScanEngine.
+	     O usuário concede esta permissão manualmente em:
+	     Preferências do Sistema → Privacidade e Segurança → Acesso Total ao Disco -->
+	<key>com.apple.security.cs.allow-unsigned-executable-memory</key>
+	<false/>
+
+	<!-- Hardened Runtime: exigido pela Apple para notarização.
+	     Restringe o que código de terceiros pode fazer dentro do processo. -->
+	<key>com.apple.security.cs.hardened-runtime</key>
 	<true/>
-	<key>com.apple.security.files.user-selected.read-only</key>
+
+	<!-- Permite JIT compilation (necessário para alguns frameworks de terceiros). -->
+	<key>com.apple.security.cs.allow-jit</key>
+	<false/>
+
+	<!-- Automation: permite controlar o Finder para mover arquivos
+	     para a Lixeira via FileManager.trashItem().
+	     O usuário autoriza em: Preferências do Sistema → Privacidade → Automação -->
+	<key>com.apple.security.automation.apple-events</key>
 	<true/>
+
+	<!-- User Notifications: para alertas de disco cheio e
+	     conclusão de scan em background. -->
+	<key>com.apple.security.cs.disable-library-validation</key>
+	<false/>
+
 </dict>
 </plist>

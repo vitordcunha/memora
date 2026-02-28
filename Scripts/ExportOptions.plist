@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- Distribuição direta (fora da App Store). Requer notarização da Apple. -->
+	<key>method</key>
+	<string>developer-id</string>
+
+	<!-- Seu Team ID da Apple Developer Account.
+	     Encontre em: developer.apple.com → Account → Membership Details -->
+	<key>teamID</key>
+	<string>M667GNZHD4</string>
+
+	<!-- Assinar o app com Developer ID Application certificate -->
+	<key>signingStyle</key>
+	<string>automatic</string>
+
+	<!-- Incluir símbolos de debug (dSYM) para upload ao Sentry -->
+	<key>uploadSymbols</key>
+	<true/>
+
+	<!-- Hardened Runtime obrigatório para notarização -->
+	<key>hardened-runtime</key>
+	<true/>
+
+</dict>
+</plist>
